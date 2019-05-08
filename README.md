@@ -50,12 +50,12 @@ Multiz alignment for each chromosome at each site - input_rs.chrN.multiz
 NOTE: The multiz alignment can be mapped to the SNP based on the position
 
 ### Execution (done for each chromosome)
-`wget -nd -q "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/multiz30way/maf/chr21.maf.gz"
+`wget -nd -q "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/multiz30way/maf/chr21.maf.gz"`
 
-gunzip chr21.maf.gz
+`gunzip chr21.maf.gz`
 
-maf_parse --features input_rs.chr21.txt chr21.maf > input_rs.chr21.multiz
+`maf_parse --features input_rs.chr21.txt chr21.maf > input_rs.chr21.multiz`
 
-rm chr21.maf.gz
+`rm chr21.maf.gz`
 
-rm chr21.maf`
+`rm chr21.maf`
