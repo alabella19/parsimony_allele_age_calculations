@@ -24,7 +24,7 @@ input_rs.rs_hg19.txt - hg19 info for all chromosomes
 NOTE: Biomart returns hits from other chromosomes when retreiving hg18 and hg19. These should be deleted before moving on.
 
 ### Execution
-Rscript biomart.R input_rs.txt
+`Rscript biomart.R input_rs.txt`
 
 # Step 2 - obtain multiz data from hg38. Done for each chromosome
 
@@ -40,8 +40,8 @@ Multiz alignment for each chromosome at each site - input_rs.chrN.multiz
 NOTE: The multiz alignment can be mapped to the SNP based on the position
 
 ### Execution (done for each chromosome)
-wget -nd -q "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/multiz30way/maf/chr21.maf.gz"
+`wget -nd -q "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/multiz30way/maf/chr21.maf.gz"
 gunzip chr21.maf.gz
 maf_parse --features input_rs.chr21.txt chr21.maf > input_rs.chr21.multiz
 rm chr21.maf.gz
-rm chr21.maf
+rm chr21.maf`
