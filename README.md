@@ -213,10 +213,36 @@ NOTE: sequences without alleles in hg19 WILL NOT BE ANALYZED
 # Step 7 - Combine all the data! 
 
 ### Requirements
+Perl - Data::Dumper & POSIX
 
 ### Input
+Order of the input files
+
+1 - multiz alignment produced in Step 2
+
+2 - hg38 position information (.txt)
+
+3 - allelic data generated in Step 6 (will automatically find the gap1 and gap2 files based on files generated in step 6)
+
+4 - hg18 reference data (.ref) produced in Step 1
+
+5 - hg19 reference data (.ref) produced in Step 1
+
+6 - header for neanderthal data generated in Step 3 
+
+7 - header for the great ape data generated in Step 4
+
+8 - Reverse data generated in Step 5 (VCF)
+
 
 ### Output
+The script will print the SNPs not included in the analysis and the reason why
+
+The script will create an xmfa for EACH ALLELE for the variant positions provided. The xmfa files will be split into a manageable size
+
 
 ### Execution 
+```bash
+split_multiz_v2.pl input_rs.chr21.multiz input_rs.chr21.txt input_rs.chr21.alleles input_rs.rs_hg18_chr21.ref input_rs.rs_hg19_chr21.ref input_rs.chr21 input_rs.chr21 input_rs.snpdb.vcf.recode.vcf >multiz.out
+```
 
