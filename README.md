@@ -31,6 +31,8 @@ input_rs.rs_hg19_chrN.ref - hg19 info for chromosome N* (with rs values)
 
 input_rs.rs_hg19.txt - hg19 info for all chromosomes
 
+input_rs.rs.rev_data.txt - information needed for reverse data in step 5
+
 NOTE: Biomart returns hits from other chromosomes when retreiving hg18 and hg19. These should be deleted before moving on.
 
 ### Execution
@@ -53,13 +55,9 @@ NOTE: The multiz alignment can be mapped to the SNP based on the position
 
 ### Execution (done for each chromosome)
 `wget -nd -q "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/multiz30way/maf/chr21.maf.gz"`
-
 `gunzip chr21.maf.gz`
-
 `maf_parse --features input_rs.chr21.txt chr21.maf > input_rs.chr21.multiz`
-
 `rm chr21.maf.gz`
-
 `rm chr21.maf`
 
 # Step 3 - Get Neanderthal data. This is optional but better to do it now than want it later! 
@@ -71,7 +69,9 @@ VCFtools https://vcftools.github.io/index.html
 hg19 information - example: input_rs.rs_hg19_chr21.txt
 
 ### Output
-VCF file of the neanderthal information for each neanderthal genome
+VCF file of the neanderthal information for each neanderthal genome - example: input_rs.chr21.vindija.out.recode.vcf
+
+Log for each file - example: input_rs.chr21.vindija.out.log
 
 ### Execution 
 Get the neanderthal data and rename it
@@ -101,4 +101,105 @@ Extract just the relevent positions
 `vcftools --gzvcf chr21_ishim.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.ishim.out`
 `vcftools --gzvcf chr21_vindija.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.vindija.out`
 
+# Step 4 - obtain greatape data
+### Requirements
+VCFtools https://vcftools.github.io/index.html
+
+### Input
+hg18 information - example: input_rs.rs_hg18_21.txt
+
+### Output
+VCF for each each species - example: rs_input.chr21.Gorilla.vcf.recode.vdf
+
+Log for each species - example: rs_input.chr21.Gorilla.vcf.log
+
+### Execution 
+Get great ape data - these files are LARGE and do not include indels
+
+`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Gorilla.vcf.gz"`
+`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_paniscus.vcf.gz"`
+`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_troglodytes.vcf.gz"`
+`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_abelii.vcf.gz"`
+`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_pygmaeus.vcf.gz"`
+
+`vcftools --gzvcf Gorilla.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Gorilla.vcf`
+`vcftools --gzvcf Pan_paniscus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_paniscus.vcf`
+`vcftools --gzvcf Pan_troglodytes.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_troglodytes.vcf`
+`vcftools --gzvcf Pongo_abelii.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_abelii.vcf`
+`vcftools --gzvcf Pongo_pygmaeus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_pygmaeus.vcf`
+
+
+
+
+# Step 5 - Get SNPs that may be listed in the reverse orientation
+Due to differences between the databases some SNPs are listed on the - strand, while others are listed on the + strand.
+
+To account for these issues we used the VCF for hg38
+
+### Requirements
+VCFtools https://vcftools.github.io/index.html
+
+### Input
+positions formatted for VCFtools - example: input_rs.rev_data.txt 
+
+VCF of all the SNPs with orientation information from hg38 - LARGE FILE
+
+### Output
+VCF of the reverse information - example: input_rs.snpdb.vcf.recode.vcf
+
+Log of reverse information - example: input_rs.snpdb.vcf.log
+
+### Execution
+Get the reference database (LARGE)
+`wget -nd -q "ftp://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz"`
+
+Get the reverse data
+`vcftools --gzvcf All_20180418.vcf.gz --positions input_rs.rev_data.txt --recode --recode-INFO "RV" --out input_rs.snpdb.vcf`
+
+# Step 6 - Get the allele data for indels 
+
+Due to the differences in databases indels are sometimes listed in different ways. For example A- and AT vs -G and TG for the same SNP 
+
+### Requirements
+VCFtools https://vcftools.github.io/index.html
+
+### Input
+1000 genomes VCF file http://www.internationalgenome.org/faq/are-1000-genomes-variant-calls-phased/
+
+hg19 snp positions - example: input_rs.rs_hg19_chr21.txt
+
+### Output
+VCF with only the positions of interest - example: input_rs.chr21.recode.vcf
+
+Files with the 3 different types of SNPs
+
+No indel - example: input_rs.chr21.alleles
+
+Indels - examples: input_rs.chr21.gap1.alleles, input_rs.chr21.gap2.alleles
+
+### Execution
+
+`vcftools --gzvcf ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz --positions input_rs.rs_hg19_chr21.txt --indv HG00103 --recode --out input_rs.chr21`
+
+NOTE: filtered out on a random individual
+
+Separate the indels
+
+`grep -o -P '^\d+\t\d+\trs\d+\t.\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.alleles`
+`grep -o -P '^\d+\t\d+\trs\d+\t..\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap1.alleles`
+`grep -o -P '^\d+\t\d+\trs\d+\t.\t..\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap2.alleles`
+
+NOTE: sequences without alleles in hg19 WILL NOT BE ANALYZED 
+
+
+
+# Step 7 - Combine all the data! 
+
+### Requirements
+
+### Input
+
+### Output
+
+### Execution 
 
