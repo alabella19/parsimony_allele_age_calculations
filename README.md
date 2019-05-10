@@ -78,31 +78,34 @@ Log for each file - example: input_rs.chr21.vindija.out.log
 ### Execution 
 Get the neanderthal data and rename it
 
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Altai/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_altai.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Denisova/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_denisova.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/LBK/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_lbk.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Loschbour/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_loschbour.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Mez1/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_mez1.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Ust_Ishim/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_ishim.vcf.gz`
-`wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Vindija33.19/chr21_mq25_mapab100.vcf.gz"`
-`mv chr21_mq25_mapab100.vcf.gz chr21_vindija.vcf.gz`
+```bash
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Altai/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_altai.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Denisova/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_denisova.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/LBK/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_lbk.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Loschbour/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_loschbour.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Mez1/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_mez1.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Ust_Ishim/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_ishim.vcf.gz
+wget -nd -q "http://cdna.eva.mpg.de/neandertal/Vindija/VCF/Vindija33.19/chr21_mq25_mapab100.vcf.gz"
+mv chr21_mq25_mapab100.vcf.gz chr21_vindija.vcf.gz
+```
 
 Extract just the relevent positions
 
-`vcftools --gzvcf chr21_altai.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.altai.out`
-`vcftools --gzvcf chr21_denisova.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.denisova.out`
-`vcftools --gzvcf chr21_lbk.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.lbk.out`
-`vcftools --gzvcf chr21_loschbour.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.loschbour.out`
-`vcftools --gzvcf chr21_mez1.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.mez1.out`
-`vcftools --gzvcf chr21_ishim.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.ishim.out`
-`vcftools --gzvcf chr21_vindija.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.vindija.out`
-
+```bash
+vcftools --gzvcf chr21_altai.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.altai.out
+vcftools --gzvcf chr21_denisova.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.denisova.out
+vcftools --gzvcf chr21_lbk.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.lbk.out
+vcftools --gzvcf chr21_loschbour.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.loschbour.out
+vcftools --gzvcf chr21_mez1.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.mez1.out
+vcftools --gzvcf chr21_ishim.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.ishim.out
+vcftools --gzvcf chr21_vindija.vcf.gz --positions input_rs.rs_hg19_chr21.txt --recode --out input_rs.chr21.vindija.out
+```
 # Step 4 - obtain greatape data
 ### Requirements
 VCFtools https://vcftools.github.io/index.html
@@ -118,18 +121,22 @@ Log for each species - example: rs_input.chr21.Gorilla.vcf.log
 ### Execution 
 Get great ape data - these files are LARGE and do not include indels
 
-`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Gorilla.vcf.gz"`
-`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_paniscus.vcf.gz"`
-`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_troglodytes.vcf.gz"`
-`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_abelii.vcf.gz"`
-`wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_pygmaeus.vcf.gz"`
+```bash
+wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Gorilla.vcf.gz"
+wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_paniscus.vcf.gz"
+wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pan_troglodytes.vcf.gz"
+wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_abelii.vcf.gz"
+wget -nd -q "https://eichlerlab.gs.washington.edu/greatape/data/VCFs/SNPs/Pongo_pygmaeus.vcf.gz"
+```
 
-`vcftools --gzvcf Gorilla.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Gorilla.vcf`
-`vcftools --gzvcf Pan_paniscus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_paniscus.vcf`
-`vcftools --gzvcf Pan_troglodytes.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_troglodytes.vcf`
-`vcftools --gzvcf Pongo_abelii.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_abelii.vcf`
-`vcftools --gzvcf Pongo_pygmaeus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_pygmaeus.vcf`
-
+Extract positions
+```bash
+vcftools --gzvcf Gorilla.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Gorilla.vcf
+vcftools --gzvcf Pan_paniscus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_paniscus.vcf
+vcftools --gzvcf Pan_troglodytes.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pan_troglodytes.vcf
+vcftools --gzvcf Pongo_abelii.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_abelii.vcf
+vcftools --gzvcf Pongo_pygmaeus.vcf.gz --positions input_rs.rs_hg18_chr21.txt --recode --out input_rs.chr21.Pongo_pygmaeus.vcf
+```
 
 
 
@@ -187,9 +194,11 @@ NOTE: filtered out on a random individual
 
 Separate the indels
 
-`grep -o -P '^\d+\t\d+\trs\d+\t.\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.alleles`
-`grep -o -P '^\d+\t\d+\trs\d+\t..\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap1.alleles`
-`grep -o -P '^\d+\t\d+\trs\d+\t.\t..\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap2.alleles`
+```bash
+grep -o -P '^\d+\t\d+\trs\d+\t.\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.alleles
+grep -o -P '^\d+\t\d+\trs\d+\t..\t.\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap1.alleles
+grep -o -P '^\d+\t\d+\trs\d+\t.\t..\t' input_rs.chr21.recode.vcf > input_rs.chr21.gap2.alleles
+```
 
 NOTE: sequences without alleles in hg19 WILL NOT BE ANALYZED 
 
