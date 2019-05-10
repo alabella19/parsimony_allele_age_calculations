@@ -160,10 +160,14 @@ Log of reverse information - example: input_rs.snpdb.vcf.log
 
 ### Execution
 Get the reference database (LARGE)
-`wget -nd -q "ftp://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz"`
+```bash
+wget -nd -q "ftp://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz"
+```
 
 Get the reverse data
-`vcftools --gzvcf All_20180418.vcf.gz --positions input_rs.rev_data.txt --recode --recode-INFO "RV" --out input_rs.snpdb.vcf`
+```bash
+vcftools --gzvcf All_20180418.vcf.gz --positions input_rs.rev_data.txt --recode --recode-INFO "RV" --out input_rs.snpdb.vcf
+```
 
 # Step 6 - Get the allele data for indels 
 
@@ -188,7 +192,9 @@ Indels - examples: input_rs.chr21.gap1.alleles, input_rs.chr21.gap2.alleles
 
 ### Execution
 
-`vcftools --gzvcf ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz --positions input_rs.rs_hg19_chr21.txt --indv HG00103 --recode --out input_rs.chr21`
+```bash
+vcftools --gzvcf ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz --positions input_rs.rs_hg19_chr21.txt --indv HG00103 --recode --out input_rs.chr21
+```
 
 NOTE: filtered out on a random individual
 
