@@ -246,3 +246,13 @@ The script will create an xmfa for EACH ALLELE for the variant positions provide
 split_multiz_v2.pl input_rs.chr21.multiz input_rs.chr21.txt input_rs.chr21.alleles input_rs.rs_hg18_chr21.ref input_rs.rs_hg19_chr21.ref input_rs.chr21 input_rs.chr21 input_rs.snpdb.vcf.recode.vcf >multiz.out
 ```
 
+### Step 8 - Use parsimony to calculate the minimum allele age
+
+### Requirements
+
+### Input
+
+### Output
+
+### Execution 
+
