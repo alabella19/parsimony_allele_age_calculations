@@ -249,10 +249,40 @@ split_multiz_v2.pl input_rs.chr21.multiz input_rs.chr21.txt input_rs.chr21.allel
 ### Step 8 - Use parsimony to calculate the minimum allele age
 
 ### Requirements
+R - modules
+
+ape - https://cran.r-project.org/web/packages/ape/index.html
+
+phangorn - https://cran.r-project.org/web/packages/phangorn/index.html
+
+phytools - https://cran.r-project.org/web/packages/phytools/index.html
+
+geiger - https://cran.r-project.org/web/packages/geiger/index.html
+
+readr - https://cran.r-project.org/web/packages/readr/index.html
 
 ### Input
+N.all_fasta.xmfa - Output from step 7 example: 0.all_fasta.xmfa & 1.all_fasta.xmfa
+
+nwk formated species tree - example: all_species_no_neanderthal_species.nwk
+
+substitution matrix - example: substitution_matrix.txt - 6 state substitution matrix (A, T, C, G, - and N)
 
 ### Output
+N.all_dates.txt - example: 0.all_dates.txt & 1.all_dates.txt
+
+Columns of N.all_dates.txt
+
+column 1: rs number of variant
+column 2: allele for which date is being calculated
+column 3: Node at which allele is predicted to arise - note this a NODE and note a date
+column 4: Other species containing the alle outside of the clade at which the allele is predicted to arise (likely not IBD)
+column 5: Number of species containing the allele outside of the clade (count of column 4)
+column 6: Predicted node at which this variant position appears 
+
+rsNNN.Allele.png - Optional: plot for each allele 
 
 ### Execution 
-
+```bash
+xmfa_parsimony.pl 0.all_fasta.xmfa
+```
