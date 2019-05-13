@@ -240,6 +240,18 @@ The script will print the SNPs not included in the analysis and the reason why
 
 The script will create an xmfa for EACH ALLELE for the variant positions provided. The xmfa files will be split into a manageable size
 
+This file will also throw errors when alleles/variants are skipped. In the files provided you can see a number of these examples.
+
+"Skipping rs rs200178552 because SNP bases do not match
+rs200178552 allele 1: -	allele 2: A	human_test is g"
+
+
+Error because there was no information in Multiz alignment: 
+
+"Skipping rs rs181386845 because SNP bases do not match
+rs181386845 allele 1: 	allele 2: 	human_test is G"
+
+
 
 ### Execution 
 ```bash
