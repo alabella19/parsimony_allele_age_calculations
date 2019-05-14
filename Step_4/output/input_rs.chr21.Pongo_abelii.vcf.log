@@ -1,0 +1,15 @@
+
+VCFtools - 0.1.15
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf Pongo_abelii.vcf.gz
+	--out input_rs.chr21.Pongo_abelii.vcf
+	--positions input_rs.rs_hg18_chr21.txt
+	--recode
+
+Using zlib version: 1.2.11
+After filtering, kept 5 out of 5 Individuals
+Outputting VCF file...
+After filtering, kept 19 out of a possible 82149581 Sites
+Run Time = 363.00 seconds

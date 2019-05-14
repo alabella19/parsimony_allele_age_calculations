@@ -1,0 +1,15 @@
+
+VCFtools - 0.1.15
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf Pan_troglodytes.vcf.gz
+	--out input_rs.chr21.Pan_troglodytes.vcf
+	--positions input_rs.rs_hg18_chr21.txt
+	--recode
+
+Using zlib version: 1.2.11
+After filtering, kept 25 out of 25 Individuals
+Outputting VCF file...
+After filtering, kept 20 out of a possible 53806652 Sites
+Run Time = 532.00 seconds
