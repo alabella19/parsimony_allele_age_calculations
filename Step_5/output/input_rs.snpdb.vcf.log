@@ -1,0 +1,16 @@
+
+VCFtools - 0.1.15
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf All_20180418.vcf.gz
+	--out input_rs.snpdb.vcf
+	--positions input_rs.rev_data.txt
+	--recode
+	--recode-INFO RV
+
+Using zlib version: 1.2.11
+After filtering, kept 0 out of 0 Individuals
+Outputting VCF file...
+After filtering, kept 104 out of a possible 660146174 Sites
+Run Time = 1519.00 seconds
