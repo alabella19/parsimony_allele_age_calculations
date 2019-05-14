@@ -1,0 +1,8 @@
+running split multiz
+Skipping rs rs181386845 because SNP bases do not match
+rs181386845 allele 1: 	allele 2: 	human_test is G
+Skipping rs rs36037856 because SNP bases do not match
+rs36037856 allele 1: 	allele 2: 	human_test is C
+Skipping rs rs2329900 because SNP bases do not match
+rs2329900 allele 1: 	allele 2: 	human_test is c
+Skipping rs2834240 because the multiz alignment is greater than 2
