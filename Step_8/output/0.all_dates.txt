@@ -1,0 +1,2 @@
+rs4239838	T	41	eulMac1;eulFla1	2	32
+rs4239838	C	hg38	mm10;canFam3	2	32
