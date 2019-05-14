@@ -242,15 +242,12 @@ The script will create an xmfa for EACH ALLELE for the variant positions provide
 
 This file will also throw errors when alleles/variants are skipped. In the files provided you can see a number of these examples.
 
-"Skipping rs rs200178552 because SNP bases do not match
-rs200178552 allele 1: -	allele 2: A	human_test is g"
-
-
-Error because there was no information in Multiz alignment: 
+For example
 
 "Skipping rs rs181386845 because SNP bases do not match
 rs181386845 allele 1: 	allele 2: 	human_test is G"
 
+This error is produced because there was no allelic information for this snp in hg19. 
 
 
 ### Execution 
